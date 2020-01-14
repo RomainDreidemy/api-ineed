@@ -1,0 +1,205 @@
+<?php
+
+namespace App\Entity;
+
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass="App\Repository\ProfilRepository")
+ */
+class Profil
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $surname;
+
+    /**
+     * @ORM\Column(type="string", length=1)
+     */
+    private $gender;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $birth_date;
+
+    /**
+     * @ORM\Column(type="string", length=3)
+     */
+    private $blood_type;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $picture;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $information;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="profils")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $User;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Medicament", mappedBy="Profil")
+     */
+    private $medicaments;
+
+    public function __construct()
+    {
+        $this->medicaments = new ArrayCollection();
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSurname(): ?string
+    {
+        return $this->surname;
+    }
+
+    public function setSurname(string $surname): self
+    {
+        $this->surname = $surname;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birth_date;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birth_date): self
+    {
+        $this->birth_date = $birth_date;
+
+        return $this;
+    }
+
+    public function getBloodType(): ?string
+    {
+        return $this->blood_type;
+    }
+
+    public function setBloodType(string $blood_type): self
+    {
+        $this->blood_type = $blood_type;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->picture;
+    }
+
+    public function setPicture(?string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
+    public function getInformation(): ?string
+    {
+        return $this->information;
+    }
+
+    public function setInformation(?string $information): self
+    {
+        $this->information = $information;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(?User $User): self
+    {
+        $this->User = $User;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Medicament[]
+     */
+    public function getMedicaments(): Collection
+    {
+        return $this->medicaments;
+    }
+
+    public function addMedicament(Medicament $medicament): self
+    {
+        if (!$this->medicaments->contains($medicament)) {
+            $this->medicaments[] = $medicament;
+            $medicament->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedicament(Medicament $medicament): self
+    {
+        if ($this->medicaments->contains($medicament)) {
+            $this->medicaments->removeElement($medicament);
+            // set the owning side to null (unless already changed)
+            if ($medicament->getProfil() === $this) {
+                $medicament->setProfil(null);
+            }
+        }
+
+        return $this;
+    }
+}
