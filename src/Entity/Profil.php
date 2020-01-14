@@ -71,9 +71,15 @@ class Profil
      */
     private $maladieChronique;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Pharmacie", mappedBy="Profil")
+     */
+    private $pharmacies;
+
     public function __construct()
     {
         $this->medicaments = new ArrayCollection();
+        $this->pharmacies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -216,6 +222,34 @@ class Profil
     public function setMaladieChronique(?MaladieChronique $maladieChronique): self
     {
         $this->maladieChronique = $maladieChronique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Pharmacie[]
+     */
+    public function getPharmacies(): Collection
+    {
+        return $this->pharmacies;
+    }
+
+    public function addPharmacy(Pharmacie $pharmacy): self
+    {
+        if (!$this->pharmacies->contains($pharmacy)) {
+            $this->pharmacies[] = $pharmacy;
+            $pharmacy->addProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removePharmacy(Pharmacie $pharmacy): self
+    {
+        if ($this->pharmacies->contains($pharmacy)) {
+            $this->pharmacies->removeElement($pharmacy);
+            $pharmacy->removeProfil($this);
+        }
 
         return $this;
     }
