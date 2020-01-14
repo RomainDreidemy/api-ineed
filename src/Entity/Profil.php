@@ -66,6 +66,11 @@ class Profil
      */
     private $medicaments;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\MaladieChronique", inversedBy="Profil")
+     */
+    private $maladieChronique;
+
     public function __construct()
     {
         $this->medicaments = new ArrayCollection();
@@ -199,6 +204,18 @@ class Profil
                 $medicament->setProfil(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMaladieChronique(): ?MaladieChronique
+    {
+        return $this->maladieChronique;
+    }
+
+    public function setMaladieChronique(?MaladieChronique $maladieChronique): self
+    {
+        $this->maladieChronique = $maladieChronique;
 
         return $this;
     }
