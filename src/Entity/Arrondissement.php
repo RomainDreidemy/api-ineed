@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +29,16 @@ class Arrondissement
      * @ORM\Column(type="integer")
      */
     private $postal_code;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Hopital", mappedBy="Arrondissement")
+     */
+    private $hopitals;
+
+    public function __construct()
+    {
+        $this->hopitals = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,6 +65,37 @@ class Arrondissement
     public function setPostalCode(int $postal_code): self
     {
         $this->postal_code = $postal_code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hopital[]
+     */
+    public function getHopitals(): Collection
+    {
+        return $this->hopitals;
+    }
+
+    public function addHopital(Hopital $hopital): self
+    {
+        if (!$this->hopitals->contains($hopital)) {
+            $this->hopitals[] = $hopital;
+            $hopital->setArrondissement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHopital(Hopital $hopital): self
+    {
+        if ($this->hopitals->contains($hopital)) {
+            $this->hopitals->removeElement($hopital);
+            // set the owning side to null (unless already changed)
+            if ($hopital->getArrondissement() === $this) {
+                $hopital->setArrondissement(null);
+            }
+        }
 
         return $this;
     }
