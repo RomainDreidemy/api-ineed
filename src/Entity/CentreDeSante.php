@@ -61,9 +61,15 @@ class CentreDeSante
      */
     private $Profil;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Horraire", mappedBy="CentreDeSante")
+     */
+    private $horraires;
+
     public function __construct()
     {
         $this->Profil = new ArrayCollection();
+        $this->horraires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -176,6 +182,37 @@ class CentreDeSante
     {
         if ($this->Profil->contains($profil)) {
             $this->Profil->removeElement($profil);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Horraire[]
+     */
+    public function getHorraires(): Collection
+    {
+        return $this->horraires;
+    }
+
+    public function addHorraire(Horraire $horraire): self
+    {
+        if (!$this->horraires->contains($horraire)) {
+            $this->horraires[] = $horraire;
+            $horraire->setCentreDeSante($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHorraire(Horraire $horraire): self
+    {
+        if ($this->horraires->contains($horraire)) {
+            $this->horraires->removeElement($horraire);
+            // set the owning side to null (unless already changed)
+            if ($horraire->getCentreDeSante() === $this) {
+                $horraire->setCentreDeSante(null);
+            }
         }
 
         return $this;
