@@ -35,9 +35,15 @@ class Arrondissement
      */
     private $hopitals;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CentreDeSante", mappedBy="Arrondissement")
+     */
+    private $centreDeSantes;
+
     public function __construct()
     {
         $this->hopitals = new ArrayCollection();
+        $this->centreDeSantes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +100,37 @@ class Arrondissement
             // set the owning side to null (unless already changed)
             if ($hopital->getArrondissement() === $this) {
                 $hopital->setArrondissement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CentreDeSante[]
+     */
+    public function getCentreDeSantes(): Collection
+    {
+        return $this->centreDeSantes;
+    }
+
+    public function addCentreDeSante(CentreDeSante $centreDeSante): self
+    {
+        if (!$this->centreDeSantes->contains($centreDeSante)) {
+            $this->centreDeSantes[] = $centreDeSante;
+            $centreDeSante->setArrondissement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCentreDeSante(CentreDeSante $centreDeSante): self
+    {
+        if ($this->centreDeSantes->contains($centreDeSante)) {
+            $this->centreDeSantes->removeElement($centreDeSante);
+            // set the owning side to null (unless already changed)
+            if ($centreDeSante->getArrondissement() === $this) {
+                $centreDeSante->setArrondissement(null);
             }
         }
 

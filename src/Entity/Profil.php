@@ -76,10 +76,16 @@ class Profil
      */
     private $pharmacies;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\CentreDeSante", mappedBy="Profil")
+     */
+    private $centreDeSantes;
+
     public function __construct()
     {
         $this->medicaments = new ArrayCollection();
         $this->pharmacies = new ArrayCollection();
+        $this->centreDeSantes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -249,6 +255,34 @@ class Profil
         if ($this->pharmacies->contains($pharmacy)) {
             $this->pharmacies->removeElement($pharmacy);
             $pharmacy->removeProfil($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CentreDeSante[]
+     */
+    public function getCentreDeSantes(): Collection
+    {
+        return $this->centreDeSantes;
+    }
+
+    public function addCentreDeSante(CentreDeSante $centreDeSante): self
+    {
+        if (!$this->centreDeSantes->contains($centreDeSante)) {
+            $this->centreDeSantes[] = $centreDeSante;
+            $centreDeSante->addProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCentreDeSante(CentreDeSante $centreDeSante): self
+    {
+        if ($this->centreDeSantes->contains($centreDeSante)) {
+            $this->centreDeSantes->removeElement($centreDeSante);
+            $centreDeSante->removeProfil($this);
         }
 
         return $this;
