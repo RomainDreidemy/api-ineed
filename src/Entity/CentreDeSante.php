@@ -66,10 +66,16 @@ class CentreDeSante
      */
     private $horraires;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Specialite", mappedBy="CentreDeSante")
+     */
+    private $specialites;
+
     public function __construct()
     {
         $this->Profil = new ArrayCollection();
         $this->horraires = new ArrayCollection();
+        $this->specialites = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -213,6 +219,34 @@ class CentreDeSante
             if ($horraire->getCentreDeSante() === $this) {
                 $horraire->setCentreDeSante(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Specialite[]
+     */
+    public function getSpecialites(): Collection
+    {
+        return $this->specialites;
+    }
+
+    public function addSpecialite(Specialite $specialite): self
+    {
+        if (!$this->specialites->contains($specialite)) {
+            $this->specialites[] = $specialite;
+            $specialite->addCentreDeSante($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSpecialite(Specialite $specialite): self
+    {
+        if ($this->specialites->contains($specialite)) {
+            $this->specialites->removeElement($specialite);
+            $specialite->removeCentreDeSante($this);
         }
 
         return $this;
