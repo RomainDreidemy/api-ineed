@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
+ * @ApiFilter(SearchFilter::class, properties={"Specialite": "exact", "CentreDeSante": "exact"})
  * @ORM\Entity(repositoryClass="App\Repository\HorraireRepository")
  */
 class Horraire
