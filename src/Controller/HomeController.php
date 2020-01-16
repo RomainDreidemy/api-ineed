@@ -12,11 +12,19 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $pharmacies = json_decode(file_get_contents(__DIR__ . '/../../public/datas/pharmacie.json'));
+        $api = file_get_contents('https://opendata.paris.fr/api/records/1.0/search/?dataset=consultations_des_centres_de_sante&rows=5200&facet=nom_de_lactivite&facet=specialite&facet=adresse_code_postal&facet=adresse_ville');
+        $json = json_decode($api);
 
-        foreach ($pharmacies as $p){
-            $p = $p->fields;
-            dd($p);
+        dd($json->records);
+
+        $specialites = [];
+        $centresDeSantes = [];
+
+        foreach ($json->records[0] as $record){
+            if(!in_array($record['specialite'], $specialites)){
+                $specialites[] = $record['specialite'];
+                $centresDeSantes[] = $record['Oto-rhino-laryngologie'];
+            }
         }
 
 
