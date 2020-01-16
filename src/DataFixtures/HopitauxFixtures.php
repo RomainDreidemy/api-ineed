@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Arrondissement;
 use App\Entity\Hopital;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class HopitauxFixtures extends Fixture
+class HopitauxFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -37,5 +38,13 @@ class HopitauxFixtures extends Fixture
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        // TODO: Implement getDependencies() method.
+        return [
+            ArrondissementsFixtures::class
+        ];
     }
 }

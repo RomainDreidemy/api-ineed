@@ -12,16 +12,12 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $csv = file_get_contents(__DIR__ . '/../../public/datas/hopitaux.csv');
+        $pharmacies = json_decode(file_get_contents(__DIR__ . '/../../public/datas/pharmacie.json'));
 
-        $hopitaux = explode("\r\n", $csv);
-
-        foreach ($hopitaux as $h){
-            $h = explode(';', $h);
-            $h[3] = str_replace(' ', '', $h[3]);
-            dump($h);
+        foreach ($pharmacies as $p){
+            $p = $p->fields;
+            dd($p);
         }
-        dd();
 
 
         return $this->render('home/index.html.twig', [
