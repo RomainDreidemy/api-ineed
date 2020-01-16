@@ -9,7 +9,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class SpeciliteToCdsixtures extends Fixture implements DependentFixtureInterface
+class SpecialiteToCdsFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -18,6 +18,20 @@ class SpeciliteToCdsixtures extends Fixture implements DependentFixtureInterface
 
         foreach ($json->records as $record) {
             $record = $record->fields;
+
+            $centre = $manager->getRepository(CentreDeSante::class)->findOneBy([
+                'name' => $record->nom_du_centre_de_sante
+            ]);
+
+            $centre
+                ->addSpecialite(
+                    $manager->getRepository(Specialite::class)->findOneBy([
+                        'name' => $record->specialite
+                    ])
+                )
+            ;
+
+            $manager->persist($centre);
 
 
         }
