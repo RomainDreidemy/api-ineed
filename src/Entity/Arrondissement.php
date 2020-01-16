@@ -10,8 +10,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={"get"},
+ *     collectionOperations={"get"}
+ * )
  * @ApiFilter(SearchFilter::class, properties={"postal_code": "exact"})
+ *
  * @ORM\Entity(repositoryClass="App\Repository\ArrondissementRepository")
  */
 class Arrondissement

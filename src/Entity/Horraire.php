@@ -8,7 +8,10 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={"get"},
+ *     collectionOperations={"get"}
+ * )
  * @ApiFilter(SearchFilter::class, properties={"Specialite": "exact", "CentreDeSante": "exact"})
  * @ORM\Entity(repositoryClass="App\Repository\HorraireRepository")
  */
