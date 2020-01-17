@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     itemOperations={"get"},
  *     collectionOperations={"get"}
  * )
+ * @ApiFilter(SearchFilter::class, properties={"Profil": "exact", "Arrondissement": "exact"})
  * @ORM\Entity(repositoryClass="App\Repository\PharmacieRepository")
  */
 class Pharmacie
@@ -57,6 +60,11 @@ class Pharmacie
      * @ORM\ManyToMany(targetEntity="App\Entity\Profil", inversedBy="pharmacies")
      */
     private $Profil;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Arrondissement", inversedBy="pharmacies")
+     */
+    private $Arrondissement;
 
     public function __construct()
     {
@@ -162,6 +170,18 @@ class Pharmacie
         if ($this->Profil->contains($profil)) {
             $this->Profil->removeElement($profil);
         }
+
+        return $this;
+    }
+
+    public function getArrondissement(): ?Arrondissement
+    {
+        return $this->Arrondissement;
+    }
+
+    public function setArrondissement(?Arrondissement $Arrondissement): self
+    {
+        $this->Arrondissement = $Arrondissement;
 
         return $this;
     }

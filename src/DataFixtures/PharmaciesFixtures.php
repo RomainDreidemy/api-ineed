@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Arrondissement;
 use App\Entity\Pharmacie;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -25,6 +26,13 @@ class PharmaciesFixtures extends Fixture implements DependentFixtureInterface
                 ->setTelecopie($p->telecopie ?? 0)
                 ->setLatitude($p->lat)
                 ->setLongitude($p->lng)
+                ->setArrondissement(
+                    $manager->getRepository(Arrondissement::class)->findOneBy(
+                        [
+                            'postal_code' => $p->cp
+                        ]
+                    )
+                )
             ;
             $manager->persist($pharmacie);
         }
