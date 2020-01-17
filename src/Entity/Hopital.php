@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\HopitalRepository")
@@ -11,6 +13,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
  *     itemOperations={"get"},
  *     collectionOperations={"get"}
  * )
+ * @ApiFilter(SearchFilter::class, properties={"Arrondissement": "exact"})
+
  */
 class Hopital
 {

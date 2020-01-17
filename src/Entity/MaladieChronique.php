@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     itemOperations={"get"},
  *     collectionOperations={"get"}
  * )
+ * @ApiFilter(SearchFilter::class, properties={"Profil": "exact"})
  * @ORM\Entity(repositoryClass="App\Repository\MaladieChroniqueRepository")
  */
 class MaladieChronique

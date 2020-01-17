@@ -47,10 +47,16 @@ class Arrondissement
      */
     private $centreDeSantes;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Pharmacie", mappedBy="Arrondissement")
+     */
+    private $pharmacies;
+
     public function __construct()
     {
         $this->hopitals = new ArrayCollection();
         $this->centreDeSantes = new ArrayCollection();
+        $this->pharmacies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -138,6 +144,37 @@ class Arrondissement
             // set the owning side to null (unless already changed)
             if ($centreDeSante->getArrondissement() === $this) {
                 $centreDeSante->setArrondissement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Pharmacie[]
+     */
+    public function getPharmacies(): Collection
+    {
+        return $this->pharmacies;
+    }
+
+    public function addPharmacy(Pharmacie $pharmacy): self
+    {
+        if (!$this->pharmacies->contains($pharmacy)) {
+            $this->pharmacies[] = $pharmacy;
+            $pharmacy->setArrondissement($this);
+        }
+
+        return $this;
+    }
+
+    public function removePharmacy(Pharmacie $pharmacy): self
+    {
+        if ($this->pharmacies->contains($pharmacy)) {
+            $this->pharmacies->removeElement($pharmacy);
+            // set the owning side to null (unless already changed)
+            if ($pharmacy->getArrondissement() === $this) {
+                $pharmacy->setArrondissement(null);
             }
         }
 
