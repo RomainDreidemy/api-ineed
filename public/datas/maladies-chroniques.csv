@@ -1,7 +1,268 @@
-﻿Maladie respiratoire chronique
-Maladie cardiovasculaires
-Diabète
-Cancer
-Maladie transmissible
-Accidents
-Autre maladies chronique
+﻿Maladies cardiaques et vasculaires;Angor/angine de poitrine
+Maladies cardiaques et vasculaires;Antécédent d’infarctus du myocarde
+Maladies cardiaques et vasculaires;Antécédent de phlébite ou d’embolie pulmonaire
+Maladies cardiaques et vasculaires;Artérite/artériopathie oblitérante des membres inférieurs
+Maladies cardiaques et vasculaires;Arythmie cardiaque par fibrillation auriculaire
+Maladies cardiaques et vasculaires;Cardiopathie congénitale
+Maladies cardiaques et vasculaires;Hypercholestérolémie
+Maladies cardiaques et vasculaires;Hypertension artérielle
+Maladies cardiaques et vasculaires;Hypertension artérielle pulmonaire
+Maladies cardiaques et vasculaires;Insuffisance cardiaque
+Maladies cardiaques et vasculaires;Insuffisance veineuse chronique
+Maladies cardiaques et vasculaires;Maladie de Kawasaki
+Maladies cardiaques et vasculaires;Syndrome de  Marfan
+Maladies cardiaques et vasculaires;Trouble de conduction (Pace Maker)
+Maladies cardiaques et vasculaires;Troubles du rythme cardiaque
+Maladies cardiaques et vasculaires;Valvulopathie, Remplacement valvulaire
+Maladies cardiaques et vasculaires;Autre maladie cardiaque ou vasculaire
+Cancers;Cancer de l’endomètre/du corps de l’utérus
+Cancers;Cancer de l’estomac
+Cancers;Cancer de l’œsophage
+Cancers;Cancer de l’ovaire
+Cancers;Cancer de la peau de type Carcinome baso-cellulaire
+Cancers;Cancer de la peau de type Carcinome spinocellulaire
+Cancers;Cancer de la prostate
+Cancers;Cancer de la thyroïde
+Cancers;Cancer de la vésicule biliaire
+Cancers;Cancer de la vessie
+Cancers;Cancer des os
+Cancers;Cancer des testicules
+Cancers;Cancer du cerveau
+Cancers;Cancer du col de l’utérus
+Cancers;Cancer du colon
+Cancers;Cancer du foie
+Cancers;Cancer du pancréas
+Cancers;Cancer du poumon, des bronches, de la plèvre
+Cancers;Cancer du rectum
+Cancers;Cancer du rein
+Cancers;Cancer du sein
+Cancers;Cancer ORL (lèvre, bouche, pharynx, larynx...)
+Cancers;Mélanome
+Cancers;Autre cancer
+Maladies endocriniennes;Acromégalie
+Maladies endocriniennes;Adénome hypophysaire
+Maladies endocriniennes;Cancer de la thyroïde
+Maladies endocriniennes;Diabète
+Maladies endocriniennes;Diabète insipide
+Maladies endocriniennes;Hyperaldostéronisme primaire 
+Maladies endocriniennes;Hyperprolactinémie
+Maladies endocriniennes;Hypothyroïdie
+Maladies endocriniennes;Insuffisance pancréatique (pancréatite chronique)
+Maladies endocriniennes;Maladie d’Addison
+Maladies endocriniennes;Maladie d'Addision (insuffisance surrénalienne)
+Maladies endocriniennes;Maladie de Basedow
+Maladies endocriniennes;Mucoviscidose
+Maladies endocriniennes;Obésité (si Indice de Masse Corporelle>30)
+Maladies endocriniennes;Phéochromocytome
+Maladies endocriniennes;Syndrome de Cushing
+Maladies endocriniennes;Thyroïdite d’Hashimoto
+Maladies endocriniennes;Autre hyperthyroïdie
+Maladies endocriniennes;Autre maladie endocrinienne
+Maladies respiratoires et ORL;Apnée du sommeil
+Maladies respiratoires et ORL;Asthme
+Maladies respiratoires et ORL;Bronchite chronique, broncho pneumopathie chronique obstructive (BPCO), emphysème 
+Maladies respiratoires et ORL;Cancer du poumon, des bronches, de la plèvre
+Maladies respiratoires et ORL;Cancer ORL (lèvre, bouche, pharynx, larynx...)
+Maladies respiratoires et ORL;Dilatation des bronches
+Maladies respiratoires et ORL;Fibrose pulmonaire
+Maladies respiratoires et ORL;Mucoviscidose
+Maladies respiratoires et ORL;Otospongiose
+Maladies respiratoires et ORL;Pneumopathie interstitielle (fibrose idiopathique, pneumonie d'hypersensibilité)
+Maladies respiratoires et ORL;Polypose naso-sinusiennes
+Maladies respiratoires et ORL;Rhinite chronique
+Maladies respiratoires et ORL;Sinusite chronique
+Maladies respiratoires et ORL;Trouble stomatologique ou maxillofacial (SADAM)
+Maladies respiratoires et ORL;Vertiges (Maladie de Menière, vertige paroxystique positionnel bénin) 
+Maladies respiratoires et ORL;Autre maladie ORL ou respiratoire
+Maladies du système digestif;Cancer de l’estomac
+Maladies du système digestif;Cancer de la vésicule biliaire
+Maladies du système digestif;Cancer du colon
+Maladies du système digestif;Cancer du foie
+Maladies du système digestif;Cancer du pancréas
+Maladies du système digestif;Cancer du rectum
+Maladies du système digestif;Colopathie fonctionnelle, côlon irritable
+Maladies du système digestif;Diverticules
+Maladies du système digestif;Hépatite/Cirrhose alcoolique
+Maladies du système digestif;Hépatite/Cirrhose auto-immune
+Maladies du système digestif;Hépatite/Cirrhose infectieuse
+Maladies du système digestif;Hépatite/Cirrhose métabolique
+Maladies du système digestif;Insuffisance pancréatique (pancréatite chronique)
+Maladies du système digestif;Maladie cœliaque
+Maladies du système digestif;Maladie de Crohn
+Maladies du système digestif;Polypes coliques
+Maladies du système digestif;Rectocolite hémorragique (RCH)
+Maladies du système digestif;Reflux gastro œsophagien, achalasie, hernie hiatale
+Maladies du système digestif;Ulcère gastro duodénal, gastrite chronique
+Maladies du système digestif;Autre maladie du foie
+Maladies du système digestif;Autre maladie du système digestif
+Maladies rhumatologiques;Amyotrophie spinale proximale
+Maladies rhumatologiques;Arthropathies microcristallines (goutte, chondrocalcinose)
+Maladies rhumatologiques;Arthrose
+Maladies rhumatologiques;Cancer des os
+Maladies rhumatologiques;Cervicalgie chronique, dorsalgie chronique (douleur du haut du dos, hernie discale cervicale, hernie discale dorsale)
+Maladies rhumatologiques;Chorée de Huntington
+Maladies rhumatologiques;Fibromyalgie
+Maladies rhumatologiques;Le syndrome de Gilbert
+Maladies rhumatologiques;Lombalgie chronique (douleur du bas du dos, hernie discale lombaire, sciatique)
+Maladies rhumatologiques;Maladie de Paget
+Maladies rhumatologiques;Maladie de Raynaud
+Maladies rhumatologiques;Maladie de Still de l'adulte
+Maladies rhumatologiques;Myasthénie
+Maladies rhumatologiques;Ostéoporose
+Maladies rhumatologiques;Polyarthrite rhumatoïde
+Maladies rhumatologiques;Rhumatisme psoriasique
+Maladies rhumatologiques;Scoliose
+Maladies rhumatologiques;Spondyloarthrite axiale (anciennement spondylarthrite ankylosante)
+Maladies rhumatologiques;Syndrome de fatigue chronique
+Maladies rhumatologiques;Syndrome douloureux régional complexe (SDRC 1/Algodystrophie et SDCR 2 /algoneurodystrophie)
+Maladies rhumatologiques;Syndromes canalaires (Syndrome du canal carpien, Syndrome de la loge de Guyon…)
+Maladies rhumatologiques;Syndromes d’Ehlers Danlos
+Maladies rhumatologiques;Syndrome de Marfan
+Maladies rhumatologiques;Tendinites chroniques (périarthrite, épicondylite, capsulite...)
+Maladies rhumatologiques;Autre maladie rhumatologique
+Maladies neurologiques et musculaires;Algie vasculaire de la face
+Maladies neurologiques et musculaires;Amyotrophie spinale proximale 
+Maladies neurologiques et musculaires;Antécédent d’accident ischémique transitoire (AIT) 
+Maladies neurologiques et musculaires;Antécédent d’accident vasculaire cérébral (AVC) 
+Maladies neurologiques et musculaires;Cancer du cerveau
+Maladies neurologiques et musculaires;Céphalées chroniques (dont migraine)
+Maladies neurologiques et musculaires;Chorée de Huntington
+Maladies neurologiques et musculaires;Démence vasculaire
+Maladies neurologiques et musculaires;Dystrophie musculaire de Duchenne
+Maladies neurologiques et musculaires;Epilepsie
+Maladies neurologiques et musculaires;Kystes de Tarlov, kyste péri-radiculaire, kyste méningé sacré
+Maladies neurologiques et musculaires;Maladie d’Alzheimer
+Maladies neurologiques et musculaires;Maladie de Parkinson
+Maladies neurologiques et musculaires;Myasthénie
+Maladies neurologiques et musculaires;Myopathie acquise (inflammatoire, autre)
+Maladies neurologiques et musculaires;Myopathie acquise (inflammatoire, dermatomyosite, polymyosite, autre)
+Maladies neurologiques et musculaires;Myopathie génétique
+Maladies neurologiques et musculaires;Narcolepsie
+Maladies neurologiques et musculaires;Neuropathie périphérique 
+Maladies neurologiques et musculaires;Névralgie d’Arnold
+Maladies neurologiques et musculaires;Névralgie du trijumeau
+Maladies neurologiques et musculaires;Polyradiculonévrite chronique
+Maladies neurologiques et musculaires;Sclérose latérale amyotrophique
+Maladies neurologiques et musculaires;Sclérose en plaque
+Maladies neurologiques et musculaires;Sclérose latérale amyotrophique
+Maladies neurologiques et musculaires;Syndrome de Guillain Barré
+Maladies neurologiques et musculaires;Syndrome de Rett
+Maladies neurologiques et musculaires;Syndrome des jambes sans repos
+Maladies neurologiques et musculaires;Syndrome douloureux régional complexe (SDRC 1/Algodystrophie et SDCR 2 /algoneurodystrophie)
+Maladies neurologiques et musculaires;Autres démences
+Maladies neurologiques et musculaires;Autre maladie neurologique
+Maladies neurologiques et musculaires;Autres syndromes parkinsoniens
+Maladies psychiatriques et psychologiques;Addictions (alcool, jeux, autres drogues...)
+Maladies psychiatriques et psychologiques;Autisme
+Maladies psychiatriques et psychologiques;Dépression
+Maladies psychiatriques et psychologiques;Psychose chronique (schizophrénie...)
+Maladies psychiatriques et psychologiques;Syndrome de stress post traumatique
+Maladies psychiatriques et psychologiques;Trouble bipolaire, maladie maniaco-dépressive
+Maladies psychiatriques et psychologiques;Trouble de la personnalité 
+Maladies psychiatriques et psychologiques;Trouble déficit d'attention/hyperactivité (TDAH)
+Maladies psychiatriques et psychologiques;Trouble du comportement alimentaire (anorexie, boulimie…)
+Maladies psychiatriques et psychologiques;Troubles anxieux
+Maladies psychiatriques et psychologiques;Troubles obsessionnels compulsifs : TOC 
+Maladies psychiatriques et psychologiques;Autre maladie psychiatrique
+Maladies rénales, urinaires ou génitales;Cancer de l’endomètre/ du corps de l’utérus
+Maladies rénales, urinaires ou génitales;Cancer de l’ovaire
+Maladies rénales, urinaires ou génitales;Cancer de la prostate
+Maladies rénales, urinaires ou génitales;Cancer de la vessie
+Maladies rénales, urinaires ou génitales;Cancer des testicules
+Maladies rénales, urinaires ou génitales;Cancer du col de l’utérus
+Maladies rénales, urinaires ou génitales;Cancer du rein
+Maladies rénales, urinaires ou génitales;Cancer du sein
+Maladies rénales, urinaires ou génitales;Endométriose
+Maladies rénales, urinaires ou génitales;Fibrome utérin
+Maladies rénales, urinaires ou génitales;Hypertrophie (adénome) bénigne de la prostate
+Maladies rénales, urinaires ou génitales;Incontinence urinaire
+Maladies rénales, urinaires ou génitales;Insuffisance rénale chronique
+Maladies rénales, urinaires ou génitales;Kyste ovarien
+Maladies rénales, urinaires ou génitales;Lithiase urinaire chronique (calculs rénaux)
+Maladies rénales, urinaires ou génitales;Maladie de Berger
+Maladies rénales, urinaires ou génitales;Polykystose rénale
+Maladies rénales, urinaires ou génitales;Trouble de la fertilité
+Maladies rénales, urinaires ou génitales;Trouble érectile
+Maladies rénales, urinaires ou génitales;Autre maladie rénale, urinaire ou génitale
+Maladies de la peau;Acné
+Maladies de la peau;Cancer de la peau de type Carcinome baso-cellulaire
+Maladies de la peau;Cancer de la peau de type Carcinome spinocellulaire
+Maladies de la peau;Dermatite séborrhéique
+Maladies de la peau;Dermatose bulleuse chronique
+Maladies de la peau;Eczéma
+Maladies de la peau;Epidermolyse bulleuse
+Maladies de la peau;Herpes
+Maladies de la peau;Maladie de Verneuil / hidradénite suppurée
+Maladies de la peau;Mélanome
+Maladies de la peau;Pelade
+Maladies de la peau;Psoriasis
+Maladies de la peau;Rosacée
+Maladies de la peau;Sclérodermie
+Maladies de la peau;Ulcère de jambe
+Maladies de la peau;Urticaire
+Maladies de la peau;Vitiligo
+Maladies de la peau;Zona
+Maladies de la peau;Autre maladie de la peau
+Maladies des yeux;Cataracte
+Maladies des yeux;Décollement de rétine ou décollement du vitré
+Maladies des yeux;Dégénérescence maculaire (DMLA)
+Maladies des yeux;Glaucome chronique
+Maladies des yeux;Rétinopathie
+Maladies des yeux;Sclérite/épisclérite
+Maladies des yeux;Syndrome de  Marfan
+Maladies des yeux;Trouble de la vision (myopie, presbytie, astigmatisme)
+Maladies des yeux;Uvéite
+Maladies des yeux;Autre maladie des yeux
+Maladies systémiques;Allergie
+Maladies systémiques;Amylose
+Maladies systémiques;Cryoglobulinémie
+Maladies systémiques;Hystiocytose
+Maladies systémiques;Lupus
+Maladies systémiques;Maladie de Behçet
+Maladies systémiques;Maladie de Churg et Strauss (granulomatose avec polyangéite) 
+Maladies systémiques;Maladie de Horton (artérite à cellules géantes) 
+Maladies systémiques;Maladie de Takayasu
+Maladies systémiques;Maladie de Wegener (granulomatose avec polyangéite)
+Maladies systémiques;Périartérite noueuse
+Maladies systémiques;Polyangéite microscopique
+Maladies systémiques;Sarcoïdose
+Maladies systémiques;Sclérodermie
+Maladies systémiques;Syndrome de Goujerot-Sjögren
+Maladies systémiques;Syndrome des antiphospholipides
+Maladies systémiques;Syndrome de  Marfan
+Maladies systémiques;Syndromes d’Ehlers Danlos
+Maladies systémiques;Autre maladie systémique
+Maladies infectieuses chroniques;Endocardite
+Maladies infectieuses chroniques;Hépatite B
+Maladies infectieuses chroniques;Hépatite C
+Maladies infectieuses chroniques;Infection ostéo-articulaire (arthrite/spondylodiscite)
+Maladies infectieuses chroniques;Infection par le VIH, SIDA
+Maladies infectieuses chroniques;Maladie de Lyme
+Maladies infectieuses chroniques;Tuberculose
+Maladies infectieuses chroniques;Autre maladie infectieuse chronique
+Maladies hématologiques;Anémie de Biermer (anémie mégaloblastique, anémie pernicieuse)
+Maladies hématologiques;Anémie de Fanconi
+Maladies hématologiques;Anémie hémolytique auto-immune
+Maladies hématologiques;Aplasie médullaire
+Maladies hématologiques;Autres hémolyses constitutionnelles (thalassémies, sphérocytose…)
+Maladies hématologiques;Bêta-thalassémie
+Maladies hématologiques;Déficit en facteur de coagulation/troubles de coagulation
+Maladies hématologiques;Déficit immunitaire (hors VIH)
+Maladies hématologiques;Drépanocytose
+Maladies hématologiques;Hémochromatose
+Maladies hématologiques;Hémophilie
+Maladies hématologiques;Leucémie aiguë 
+Maladies hématologiques;Leucémie lymphoïde chronique
+Maladies hématologiques;Leucémie myéloïde chronique
+Maladies hématologiques;Lymphome B à grandes cellules
+Maladies hématologiques;Maladie de Hodgkin
+Maladies hématologiques;Maladie de Vaquez
+Maladies hématologiques;Microangiopathie thrombotique (SHU, PTT)
+Maladies hématologiques;Myélome (gammapathie monoclonale, MGUS, plasmocytome, maladie de Waldenström)
+Maladies hématologiques;Porphyries
+Maladies hématologiques;Purpura thrombopénique immunologique
+Maladies hématologiques;Syndrome de Wiskott-Aldrich
+Maladies hématologiques;Syndrome myélodysplasique
+Maladies hématologiques;Syndrome myéloprolifératif (polyglobulie, thrombocytémie essentielle, myélofibrose primitive)
+Maladies hématologiques;Autres Lymphomes
+Maladies hématologiques;Autre maladie du sang

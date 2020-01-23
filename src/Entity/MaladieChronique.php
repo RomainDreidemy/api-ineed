@@ -41,6 +41,12 @@ class MaladieChronique
      */
     private $Profil;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CategorieMaladieChronique", inversedBy="MaladieChronique")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categorieMaladieChronique;
+
     public function __construct()
     {
         $this->Profil = new ArrayCollection();
@@ -83,6 +89,18 @@ class MaladieChronique
     public function setProfil(?Profil $Profil): self
     {
         $this->Profil = $Profil;
+
+        return $this;
+    }
+
+    public function getCategorieMaladieChronique(): ?CategorieMaladieChronique
+    {
+        return $this->categorieMaladieChronique;
+    }
+
+    public function setCategorieMaladieChronique(?CategorieMaladieChronique $categorieMaladieChronique): self
+    {
+        $this->categorieMaladieChronique = $categorieMaladieChronique;
 
         return $this;
     }

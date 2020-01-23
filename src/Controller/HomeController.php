@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\CategorieMaladieChronique;
 use App\Entity\Profil;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,7 +15,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(EntityManagerInterface $entityManager)
     {
 
         $csv = file_get_contents(__DIR__ . '/../../public/datas/maladies-chroniques.csv');
@@ -22,10 +23,18 @@ class HomeController extends AbstractController
         $maladiesChroniques = explode("\r\n", $csv);
 
         foreach ($maladiesChroniques as $mc){
-            dump($mc);
+            $m = explode(";", $mc);
+
+            $testCat = $entityManager->getRepository(CategorieMaladieChronique::class)->findOneBy(
+                [
+                    'name' => $m[0]
+                ]
+            );
+
+            dump($testCat);
+            dd($mc);
         }
 
-        dd();
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
