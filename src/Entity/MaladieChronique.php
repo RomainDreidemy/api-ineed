@@ -37,7 +37,7 @@ class MaladieChronique
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Profil", mappedBy="maladieChronique")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Profil", inversedBy="maladieChroniques")
      */
     private $Profil;
 
@@ -75,33 +75,14 @@ class MaladieChronique
         return $this;
     }
 
-    /**
-     * @return Collection|Profil[]
-     */
-    public function getProfil(): Collection
+    public function getProfil(): ?Profil
     {
         return $this->Profil;
     }
 
-    public function addProfil(Profil $profil): self
+    public function setProfil(?Profil $Profil): self
     {
-        if (!$this->Profil->contains($profil)) {
-            $this->Profil[] = $profil;
-            $profil->setMaladieChronique($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProfil(Profil $profil): self
-    {
-        if ($this->Profil->contains($profil)) {
-            $this->Profil->removeElement($profil);
-            // set the owning side to null (unless already changed)
-            if ($profil->getMaladieChronique() === $this) {
-                $profil->setMaladieChronique(null);
-            }
-        }
+        $this->Profil = $Profil;
 
         return $this;
     }

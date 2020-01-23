@@ -70,11 +70,6 @@ class Profil
     private $medicaments;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\MaladieChronique", inversedBy="Profil")
-     */
-    private $maladieChronique;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Pharmacie", mappedBy="Profil")
      */
     private $pharmacies;
@@ -84,11 +79,17 @@ class Profil
      */
     private $centreDeSantes;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\MaladieChronique", mappedBy="Profil")
+     */
+    private $maladieChroniques;
+
     public function __construct()
     {
         $this->medicaments = new ArrayCollection();
         $this->pharmacies = new ArrayCollection();
         $this->centreDeSantes = new ArrayCollection();
+        $this->maladieChroniques = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,19 +223,7 @@ class Profil
 
         return $this;
     }
-
-    public function getMaladieChronique(): ?MaladieChronique
-    {
-        return $this->maladieChronique;
-    }
-
-    public function setMaladieChronique(?MaladieChronique $maladieChronique): self
-    {
-        $this->maladieChronique = $maladieChronique;
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection|Pharmacie[]
      */
@@ -286,6 +275,37 @@ class Profil
         if ($this->centreDeSantes->contains($centreDeSante)) {
             $this->centreDeSantes->removeElement($centreDeSante);
             $centreDeSante->removeProfil($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MaladieChronique[]
+     */
+    public function getMaladieChroniques(): Collection
+    {
+        return $this->maladieChroniques;
+    }
+
+    public function addMaladieChronique(MaladieChronique $maladieChronique): self
+    {
+        if (!$this->maladieChroniques->contains($maladieChronique)) {
+            $this->maladieChroniques[] = $maladieChronique;
+            $maladieChronique->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaladieChronique(MaladieChronique $maladieChronique): self
+    {
+        if ($this->maladieChroniques->contains($maladieChronique)) {
+            $this->maladieChroniques->removeElement($maladieChronique);
+            // set the owning side to null (unless already changed)
+            if ($maladieChronique->getProfil() === $this) {
+                $maladieChronique->setProfil(null);
+            }
         }
 
         return $this;
