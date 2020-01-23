@@ -292,7 +292,7 @@ class Profil
     {
         if (!$this->maladieChroniques->contains($maladieChronique)) {
             $this->maladieChroniques[] = $maladieChronique;
-            $maladieChronique->setProfil($this);
+            $maladieChronique->addProfil($this);
         }
 
         return $this;
@@ -302,10 +302,7 @@ class Profil
     {
         if ($this->maladieChroniques->contains($maladieChronique)) {
             $this->maladieChroniques->removeElement($maladieChronique);
-            // set the owning side to null (unless already changed)
-            if ($maladieChronique->getProfil() === $this) {
-                $maladieChronique->setProfil(null);
-            }
+            $maladieChronique->removeProfil($this);
         }
 
         return $this;

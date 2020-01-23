@@ -37,15 +37,15 @@ class MaladieChronique
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Profil", inversedBy="maladieChroniques")
-     */
-    private $Profil;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\CategorieMaladieChronique", inversedBy="MaladieChronique")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorieMaladieChronique;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Profil", inversedBy="maladieChroniques")
+     */
+    private $Profil;
 
     public function __construct()
     {
@@ -81,18 +81,6 @@ class MaladieChronique
         return $this;
     }
 
-    public function getProfil(): ?Profil
-    {
-        return $this->Profil;
-    }
-
-    public function setProfil(?Profil $Profil): self
-    {
-        $this->Profil = $Profil;
-
-        return $this;
-    }
-
     public function getCategorieMaladieChronique(): ?CategorieMaladieChronique
     {
         return $this->categorieMaladieChronique;
@@ -101,6 +89,32 @@ class MaladieChronique
     public function setCategorieMaladieChronique(?CategorieMaladieChronique $categorieMaladieChronique): self
     {
         $this->categorieMaladieChronique = $categorieMaladieChronique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Profil[]
+     */
+    public function getProfil(): Collection
+    {
+        return $this->Profil;
+    }
+
+    public function addProfil(Profil $profil): self
+    {
+        if (!$this->Profil->contains($profil)) {
+            $this->Profil[] = $profil;
+        }
+
+        return $this;
+    }
+
+    public function removeProfil(Profil $profil): self
+    {
+        if ($this->Profil->contains($profil)) {
+            $this->Profil->removeElement($profil);
+        }
 
         return $this;
     }
