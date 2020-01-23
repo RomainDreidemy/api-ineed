@@ -16,6 +16,17 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+
+        $csv = file_get_contents(__DIR__ . '/../../public/datas/maladies-chroniques.csv');
+
+        $maladiesChroniques = explode("\r\n", $csv);
+
+        foreach ($maladiesChroniques as $mc){
+            dump($mc);
+        }
+
+        dd();
+
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
         ]);
