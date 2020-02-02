@@ -32,7 +32,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/user/new", name="home")
+     * @Route("/user/new", name="new")
      */
     public function newUser(EntityManagerInterface $entityManager, Request $request)
     {
@@ -45,11 +45,43 @@ class HomeController extends AbstractController
         $email = $request->get('email');
         $password = $request->get('password');
 
+        $user = new User();
+
+        $user
+            ->setEmail($email)
+            ->setPassword($this->passwordEncoder->encodePassword($user, $password))
+        ;
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        $userReturn = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
 
         return $this->json([
             'Auth' => true,
-            'Email' => $email,
-            'Password' => $password
+            'User' => $userReturn
         ]);
     }
+
+    /**
+     * @Route("/user/new", name="login")
+     */
+//    public function loginUser(EntityManagerInterface $entityManager, Request $request)
+//    {
+//        if(!$request->isMethod('POST')){
+//            return $this->json([
+//                'Auth' => false
+//            ]);
+//        }
+//
+//        $email = $request->get('email');
+//        $password = $request->get('password');
+//
+//
+//
+//        return $this->json([
+//            'Auth' => true,
+//        ]);
+//    }
+
 }

@@ -15,7 +15,11 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: lazy
+            anonymous: ~
+            json_login:
+                check_path: /login
+                username_path: email
+                password_path: password
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
