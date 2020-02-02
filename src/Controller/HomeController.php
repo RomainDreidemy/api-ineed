@@ -7,37 +7,43 @@ use App\Entity\Profil;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints\DateTime;
 
 class HomeController extends AbstractController
 {
+    private $passwordEncoder;
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
     /**
      * @Route("/", name="home")
      */
     public function index(EntityManagerInterface $entityManager)
     {
 
-        $csv = file_get_contents(__DIR__ . '/../../public/datas/maladies-chroniques.csv');
-
-        $maladiesChroniques = explode("\r\n", $csv);
-
-        foreach ($maladiesChroniques as $mc){
-            $m = explode(";", $mc);
-
-            $testCat = $entityManager->getRepository(CategorieMaladieChronique::class)->findOneBy(
-                [
-                    'name' => $m[0]
-                ]
-            );
-
-            dump($testCat);
-            dd($mc);
-        }
-
-
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+        ]);
+    }
+
+    /**
+     * @Route("/user/new", name="home")
+     */
+    public function newUser(EntityManagerInterface $entityManager, Request $request)
+    {
+        if(!$request->isMethod('POST')){
+            return $this->json([
+                'Auth' => false
+            ]);
+        }
+
+        return $this->json([
+            'Auth' => true
         ]);
     }
 }
