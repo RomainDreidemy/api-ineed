@@ -42,8 +42,14 @@ class HomeController extends AbstractController
             ]);
         }
 
+        $email = $request->get('email');
+        $password = $request->get('password');
+
+
         return $this->json([
-            'Auth' => true
+            'Auth' => true,
+            'Email' => $email,
+            'Password' => $password
         ]);
     }
 }
