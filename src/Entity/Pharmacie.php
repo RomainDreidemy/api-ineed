@@ -27,12 +27,12 @@ class Pharmacie
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $address;
 
@@ -42,17 +42,17 @@ class Pharmacie
     private $telephone;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $telecopie;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $latitude;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $longitude;
 
@@ -66,9 +66,35 @@ class Pharmacie
      */
     private $Arrondissement;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $open_night;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $open_sunday;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $open_all;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $place_id;
+
+    /**
+     * @ORM\Column(type="json_array")
+     */
+    private $horraires = [];
+
     public function __construct()
     {
         $this->Profil = new ArrayCollection();
+        $this->pharmacieHorraires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -182,6 +208,66 @@ class Pharmacie
     public function setArrondissement(?Arrondissement $Arrondissement): self
     {
         $this->Arrondissement = $Arrondissement;
+
+        return $this;
+    }
+
+    public function getOpenNight(): ?bool
+    {
+        return $this->open_night;
+    }
+
+    public function setOpenNight(bool $open_night): self
+    {
+        $this->open_night = $open_night;
+
+        return $this;
+    }
+
+    public function getOpenSunday(): ?bool
+    {
+        return $this->open_sunday;
+    }
+
+    public function setOpenSunday(bool $open_sunday): self
+    {
+        $this->open_sunday = $open_sunday;
+
+        return $this;
+    }
+
+    public function getOpenAll(): ?bool
+    {
+        return $this->open_all;
+    }
+
+    public function setOpenAll(bool $open_all): self
+    {
+        $this->open_all = $open_all;
+
+        return $this;
+    }
+
+    public function getPlaceId(): ?string
+    {
+        return $this->place_id;
+    }
+
+    public function setPlaceId(string $place_id): self
+    {
+        $this->place_id = $place_id;
+
+        return $this;
+    }
+
+    public function getHorraires(): ?array
+    {
+        return $this->horraires;
+    }
+
+    public function setHorraires(array $horraires): self
+    {
+        $this->horraires = $horraires;
 
         return $this;
     }
