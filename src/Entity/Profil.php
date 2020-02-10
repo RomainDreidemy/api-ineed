@@ -17,9 +17,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Profil
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var string
+     *
+     * @ORM\Column(name="id", type="string")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="CUSTOM")
+     * @ORM\CustomIdGenerator(class="App\Service\IdGenerator")
      */
     private $id;
 
@@ -92,7 +95,7 @@ class Profil
         $this->maladieChroniques = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
