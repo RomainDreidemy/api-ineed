@@ -8,3 +8,12 @@ api_platform:
     collection:
         pagination:
             enabled: false
+
+    # The title of the API.
+    title: 'I need'
+
+    # The description of the API.
+    description: 'API description'
+
+    # The version of the API.
+    version: '1.1.0'
