@@ -10,8 +10,9 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="login", methods={"POST"})
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function login(Response $request)
+    public function login()
     {
         $user = $this->getUser();
 
