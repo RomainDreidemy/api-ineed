@@ -87,12 +87,18 @@ class Profil
      */
     private $maladieChroniques;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Hopital", mappedBy="Profil")
+     */
+    private $hopitals;
+
     public function __construct()
     {
         $this->medicaments = new ArrayCollection();
         $this->pharmacies = new ArrayCollection();
         $this->centreDeSantes = new ArrayCollection();
         $this->maladieChroniques = new ArrayCollection();
+        $this->hopitals = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -306,6 +312,34 @@ class Profil
         if ($this->maladieChroniques->contains($maladieChronique)) {
             $this->maladieChroniques->removeElement($maladieChronique);
             $maladieChronique->removeProfil($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hopital[]
+     */
+    public function getHopitals(): Collection
+    {
+        return $this->hopitals;
+    }
+
+    public function addHopital(Hopital $hopital): self
+    {
+        if (!$this->hopitals->contains($hopital)) {
+            $this->hopitals[] = $hopital;
+            $hopital->addProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHopital(Hopital $hopital): self
+    {
+        if ($this->hopitals->contains($hopital)) {
+            $this->hopitals->removeElement($hopital);
+            $hopital->removeProfil($this);
         }
 
         return $this;

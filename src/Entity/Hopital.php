@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
@@ -45,6 +47,16 @@ class Hopital
      * @ORM\JoinColumn(nullable=false)
      */
     private $Arrondissement;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Profil", inversedBy="hopitals")
+     */
+    private $Profil;
+
+    public function __construct()
+    {
+        $this->Profil = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -95,6 +107,32 @@ class Hopital
     public function setArrondissement(?Arrondissement $Arrondissement): self
     {
         $this->Arrondissement = $Arrondissement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Profil[]
+     */
+    public function getProfil(): Collection
+    {
+        return $this->Profil;
+    }
+
+    public function addProfil(Profil $profil): self
+    {
+        if (!$this->Profil->contains($profil)) {
+            $this->Profil[] = $profil;
+        }
+
+        return $this;
+    }
+
+    public function removeProfil(Profil $profil): self
+    {
+        if ($this->Profil->contains($profil)) {
+            $this->Profil->removeElement($profil);
+        }
 
         return $this;
     }
