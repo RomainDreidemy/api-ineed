@@ -17,32 +17,53 @@ class CentresDeSantesFixtures extends Fixture implements DependentFixtureInterfa
 
         $centresDeSantes = [];
 
-        foreach ($json->records as $record){
+        foreach ($json->records as $record) {
             $record = $record->fields;
 
-            if(!in_array($record->nom_du_centre_de_sante, $centresDeSantes)){
-                $centresDeSantes[] = $record->nom_du_centre_de_sante;
+            if(!isset($centresDeSantes[$record->nom_du_centre_de_sante])){
+                $centresDeSantes[$record->nom_du_centre_de_sante] = [
+                    'name' => $record->nom_du_centre_de_sante,
+                    'address' => $record->adresse_rue,
+                    'telephone' => str_replace(' ', '',$record->numero_de_telephone),
+                    'latitude' => $record->latitude,
+                    'longitude' => $record->longitude,
+                    'cp' => $record->adresse_code_postal,
+                    'time_start' => $record->heure_de_debut,
+                    'time_end' => $record->heure_de_fin
+                ];
+            }else{
+                if($centresDeSantes[$record->nom_du_centre_de_sante]['time_start'] > $record->heure_de_debut){
+                    $centresDeSantes[$record->nom_du_centre_de_sante]['time_start'] = $record->heure_de_debut;
+                }
 
-                $centreDeSante = new CentreDeSante();
-
-                $centreDeSante
-                    ->setName($record->nom_du_centre_de_sante)
-                    ->setAddress($record->adresse_rue)
-                    ->setTelephone(
-                        str_replace(' ', '',$record->numero_de_telephone)
-                    )
-//                    ->setWebsite()
-                    ->setLatitude($record->latitude)
-                    ->setLongitude($record->longitude)
-                    ->setArrondissement(
-                        $manager->getRepository(Arrondissement::class)->findOneBy([
-                            'postal_code' => ($record->adresse_code_postal == 750012) ? 75012 : $record->adresse_code_postal
-                        ])
-                    )
-                ;
-
-                $manager->persist($centreDeSante);
+                if($centresDeSantes[$record->nom_du_centre_de_sante]['time_end'] < $record->heure_de_fin){
+                    $centresDeSantes[$record->nom_du_centre_de_sante]['time_end'] = $record->heure_de_fin;
+                }
             }
+        }
+
+
+        foreach ($centresDeSantes as $record){
+
+            $centreDeSante = new CentreDeSante();
+
+            $centreDeSante
+                ->setName($record['name'])
+                ->setAddress($record['address'])
+                ->setTelephone($record['telephone'])
+//                    ->setWebsite()
+                ->setLatitude($record['latitude'])
+                ->setLongitude($record['longitude'])
+                ->setArrondissement(
+                    $manager->getRepository(Arrondissement::class)->findOneBy([
+                        'postal_code' => ($record['cp'] == 750012) ? 75012 : $record['cp']
+                    ])
+                )
+                ->setTimeStart(new \DateTime($record['time_start']))
+                ->setTimeEnd(new \DateTime($record['time_end']))
+            ;
+
+            $manager->persist($centreDeSante);
         }
 
         $manager->flush();

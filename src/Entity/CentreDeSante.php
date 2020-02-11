@@ -69,19 +69,23 @@ class CentreDeSante
     private $Profil;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Horraire", mappedBy="CentreDeSante")
-     */
-    private $horraires;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Specialite", mappedBy="CentreDeSante")
      */
     private $specialites;
 
+    /**
+     * @ORM\Column(type="time", nullable=true)
+     */
+    private $time_start;
+
+    /**
+     * @ORM\Column(type="time", nullable=true)
+     */
+    private $time_end;
+
     public function __construct()
     {
         $this->Profil = new ArrayCollection();
-        $this->horraires = new ArrayCollection();
         $this->specialites = new ArrayCollection();
     }
 
@@ -201,37 +205,6 @@ class CentreDeSante
     }
 
     /**
-     * @return Collection|Horraire[]
-     */
-    public function getHorraires(): Collection
-    {
-        return $this->horraires;
-    }
-
-    public function addHorraire(Horraire $horraire): self
-    {
-        if (!$this->horraires->contains($horraire)) {
-            $this->horraires[] = $horraire;
-            $horraire->setCentreDeSante($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHorraire(Horraire $horraire): self
-    {
-        if ($this->horraires->contains($horraire)) {
-            $this->horraires->removeElement($horraire);
-            // set the owning side to null (unless already changed)
-            if ($horraire->getCentreDeSante() === $this) {
-                $horraire->setCentreDeSante(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Specialite[]
      */
     public function getSpecialites(): Collection
@@ -255,6 +228,30 @@ class CentreDeSante
             $this->specialites->removeElement($specialite);
             $specialite->removeCentreDeSante($this);
         }
+
+        return $this;
+    }
+
+    public function getTimeStart(): ?\DateTimeInterface
+    {
+        return $this->time_start;
+    }
+
+    public function setTimeStart(?\DateTimeInterface $time_start): self
+    {
+        $this->time_start = $time_start;
+
+        return $this;
+    }
+
+    public function getTimeEnd(): ?\DateTimeInterface
+    {
+        return $this->time_end;
+    }
+
+    public function setTimeEnd(?\DateTimeInterface $time_end): self
+    {
+        $this->time_end = $time_end;
 
         return $this;
     }

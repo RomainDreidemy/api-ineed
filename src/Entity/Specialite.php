@@ -37,18 +37,12 @@ class Specialite
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Horraire", mappedBy="Specialite")
-     */
-    private $horraires;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\CentreDeSante", inversedBy="specialites")
      */
     private $CentreDeSante;
 
     public function __construct()
     {
-        $this->horraires = new ArrayCollection();
         $this->CentreDeSante = new ArrayCollection();
     }
 
@@ -77,37 +71,6 @@ class Specialite
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Horraire[]
-     */
-    public function getHorraires(): Collection
-    {
-        return $this->horraires;
-    }
-
-    public function addHorraire(Horraire $horraire): self
-    {
-        if (!$this->horraires->contains($horraire)) {
-            $this->horraires[] = $horraire;
-            $horraire->setSpecialite($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHorraire(Horraire $horraire): self
-    {
-        if ($this->horraires->contains($horraire)) {
-            $this->horraires->removeElement($horraire);
-            // set the owning side to null (unless already changed)
-            if ($horraire->getSpecialite() === $this) {
-                $horraire->setSpecialite(null);
-            }
-        }
 
         return $this;
     }
