@@ -8,20 +8,25 @@
 
     {% include 'Components/flashes.html.twig' %}
 
-    <h2 class="h2">Informations</h2>
 
-    <p>Identifiant : {{ profil.id }}</p>
-    <p>Name : {{ profil.name }} {{ profil.surname }}</p>
-    <p>Gender : {% if profil.gender == 'h' %}Male{% else %}Female{% endif %}</p>
-    <p>Birth date : {{ profil.birthDate|date('Y-m-d') }}</p>
-    <p>Blood type : {{ profil.bloodType }}</p>
-    <p>Information : {{ profil.information }}</p>
-    <p>Maladie chronique : </p>
-    <ul>
-        {% for maladie in profil.maladieChroniques %}
-            <li>{{ maladie.name }}</li>
-        {% endfor %}
-    </ul>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Informations</h5>
+
+        <p>Identifiant : {{ profil.id }}</p>
+        <p>Name : {{ profil.name }} {{ profil.surname }}</p>
+        <p>Gender : {% if profil.gender == 'h' %}Male{% else %}Female{% endif %}</p>
+        <p>Birth date : {{ profil.birthDate|date('Y-m-d') }}</p>
+        <p>Blood type : {{ profil.bloodType }}</p>
+        <p>Information : {{ profil.information }}</p>
+        <p>Maladie chronique : </p>
+        <ul>
+            {% for maladie in profil.maladieChroniques %}
+                <li>{{ maladie.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
     <hr>
 
