@@ -18,6 +18,13 @@ security:
             anonymous: ~
             json_login:
                 check_path: /login
+            guard:
+                authenticators:
+                    - App\Security\BackofficeAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -30,5 +37,4 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/administration, roles: ROLE_ADMIN }
