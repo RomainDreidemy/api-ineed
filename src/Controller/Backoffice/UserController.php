@@ -35,6 +35,16 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/administration/users/see/{id}", name="users_see")
+     */
+    public function seeUser(User $user,EntityManagerInterface $entityManager)
+    {
+        return $this->render('user/see.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
      * @Route("/administration/users/add", name="users_add")
      * @param EntityManagerInterface $entityManager
      * @param Request $request

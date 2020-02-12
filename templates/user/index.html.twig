@@ -26,6 +26,9 @@
             <th scope="row">{{ user.id }}</th>
             <td>{{ user.email }}</td>
             <td>
+                <a href="{{ url('users_see', {id: user.id}) }}" type="button" class="btn btn-primary color-white">
+                    See
+                </a>
                 <a href="{{ url('users_update', {id: user.id}) }}" type="button" class="btn btn-primary color-white">
                     Update
                 </a>

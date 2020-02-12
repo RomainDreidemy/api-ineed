@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">Profil</h1>
+
+    {% include 'Components/flashes.html.twig' %}
+
+    <h2 class="h2">Informations</h2>
+
+    <p>Identifiant : {{ profil.id }}</p>
+    <p>Name : {{ profil.name }} {{ profil.surname }}</p>
+    <p>Gender : {% if profil.gender == 'h' %}Male{% else %}Female{% endif %}</p>
+    <p>Birth date : {{ profil.birthDate|date('Y-m-d') }}</p>
+    <p>Blood type : {{ profil.bloodType }}</p>
+    <p>Information : {{ profil.information }}</p>
+    <p>Maladie chronique : </p>
+    <ul>
+        {% for maladie in profil.maladieChroniques %}
+            <li>{{ maladie.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+
+    <h2 class="h2">Centre de santé</h2>
+
+    <table class="table table-hover table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col" class="table-dark">#</th>
+            <th scope="col" class="table-dark">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for centre in profil.centreDeSantes %}
+            <tr>
+                <th scope="row">{{ centre.id }}</th>
+                <td>{{ centre.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2 class="h2">Pharmacie</h2>
+
+    <table class="table table-hover table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col" class="table-dark">#</th>
+            <th scope="col" class="table-dark">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pharmacie in profil.pharmacies %}
+            <tr>
+                <th scope="row">{{ pharmacie.id }}</th>
+                <td>{{ pharmacie.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <hr>
+
+    <h2 class="h2">Hopitaux</h2>
+
+    <table class="table table-hover table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col" class="table-dark">#</th>
+            <th scope="col" class="table-dark">Nom</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hopital in profil.hopitals %}
+            <tr>
+                <th scope="row">{{ hopital.id }}</th>
+                <td>{{ hopital.name }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
