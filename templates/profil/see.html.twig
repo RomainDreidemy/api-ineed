@@ -9,86 +9,78 @@
     {% include 'Components/flashes.html.twig' %}
 
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Informations</h5>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Informations</h5>
 
-        <p>Identifiant : {{ profil.id }}</p>
-        <p>Name : {{ profil.name }} {{ profil.surname }}</p>
-        <p>Gender : {% if profil.gender == 'h' %}Male{% else %}Female{% endif %}</p>
-        <p>Birth date : {{ profil.birthDate|date('Y-m-d') }}</p>
-        <p>Blood type : {{ profil.bloodType }}</p>
-        <p>Information : {{ profil.information }}</p>
-        <p>Maladie chronique : </p>
-        <ul>
-            {% for maladie in profil.maladieChroniques %}
-                <li>{{ maladie.name }}</li>
-            {% endfor %}
-        </ul>
+            <p>Identifiant : {{ profil.id }}</p>
+            <p>Name : {{ profil.name }} {{ profil.surname }}</p>
+            <p>Gender : {% if profil.gender == 'h' %}Male{% else %}Female{% endif %}</p>
+            <p>Birth date : {{ profil.birthDate|date('Y-m-d') }}</p>
+            <p>Blood type : {{ profil.bloodType }}</p>
+            <p>Information : {{ profil.information }}</p>
+            <p>Maladie chronique : </p>
+            <ul>
+                {% for maladie in profil.maladieChroniques %}
+                    <li>{{ maladie.name }}</li>
+                {% endfor %}
+            </ul>
+
+            <a href="{{ url('users_see', {id: profil.user.id}) }}" type="button" class="btn btn-primary color-white">
+                Show user
+            </a>
+        </div>
     </div>
-</div>
 
-    <hr>
+    <h2 class="h2 mt-3">Favorites list</h2>
 
-    <h2 class="h2">Centre de santé</h2>
+    <div class="d-flex justify-content-between">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Health center</h5>
+                {% if profil.centreDeSantes is not empty %}
+                    <ul class="list-group">
+                        {% for centre in profil.centreDeSantes %}
+                            <li class="list-group-item">{{ centre.id }} - {{ centre.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="alert alert-warning">No health center saved for this profil</div>
+                {% endif %}
+            </div>
+        </div>
 
-    <table class="table table-hover table-bordered table-striped">
-        <thead>
-        <tr>
-            <th scope="col" class="table-dark">#</th>
-            <th scope="col" class="table-dark">Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for centre in profil.centreDeSantes %}
-            <tr>
-                <th scope="row">{{ centre.id }}</th>
-                <td>{{ centre.name }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Pharmacy</h5>
+                {% if profil.pharmacies is not empty %}
+                    <ul class="list-group">
+                        {% for pharmacie in profil.pharmacies %}
+                            <li class="list-group-item">{{ pharmacie.id }} - {{ pharmacie.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="alert alert-warning">No pharmacy saved for this profil</div>
+                {% endif %}
+            </div>
+        </div>
 
-    <hr>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Hospital</h5>
+                {% if profil.hopitals is not empty %}
+                    <ul class="list-group">
+                        {% for hopital in profil.hopitals %}
+                            <li class="list-group-item">{{ hopital.id }} - {{ hopital.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="alert alert-warning">No hospital saved for this profil</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
-    <h2 class="h2">Pharmacie</h2>
-
-    <table class="table table-hover table-bordered table-striped">
-        <thead>
-        <tr>
-            <th scope="col" class="table-dark">#</th>
-            <th scope="col" class="table-dark">Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for pharmacie in profil.pharmacies %}
-            <tr>
-                <th scope="row">{{ pharmacie.id }}</th>
-                <td>{{ pharmacie.name }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <hr>
-
-    <h2 class="h2">Hopitaux</h2>
-
-    <table class="table table-hover table-bordered table-striped">
-        <thead>
-        <tr>
-            <th scope="col" class="table-dark">#</th>
-            <th scope="col" class="table-dark">Nom</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for hopital in profil.hopitals %}
-            <tr>
-                <th scope="row">{{ hopital.id }}</th>
-                <td>{{ hopital.name }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
 
 {% endblock %}

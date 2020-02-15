@@ -22,12 +22,15 @@
                 <th scope="row">{{ profil.id }}</th>
                 <td>{{ profil.name }} {{ profil.surname }}</td>
                 <td>
-{#                    <a href="{{ url('users_update', {id: user.id}) }}" type="button" class="btn btn-primary color-white">#}
-{#                        Update#}
-{#                    </a>#}
-{#                    <a href="{{ url('users_delete', {id: user.id}) }}" type="button" class="btn btn-danger color-white">#}
-{#                        Remove#}
-{#                    </a>#}
+                   <a href="{{ url('profils_see', {id: profil.id}) }}" type="button" class="btn btn-primary color-white">
+                        See
+                    </a>
+                    <a href="{{ url('profils_update', {id: profil.id}) }}" type="button" class="btn btn-primary color-white">
+                        Update
+                    </a>
+                    <a href="{{ url('profils_delete', {id: profil.id}) }}" type="button" class="btn btn-danger color-white">
+                        Remove
+                    </a>
                 </td>
             </tr>
         {% endfor %}

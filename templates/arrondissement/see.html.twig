@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">Arrondissement</h1>
+
+    {% include 'Components/flashes.html.twig' %}
+
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Informations</h5>
+
+            <p>Identifiant : {{ arrondissement.id }}</p>
+            <p>Postal code : {{ arrondissement.postalCode }}</p>
+            <p>Name : {{ arrondissement.name }}</p>
+        </div>
+    </div>
+
+    <h2 class="h2 mt-3">Present in this arrondissement</h2>
+
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">Health center</h5>
+            {% if arrondissement.centreDeSantes is not empty %}
+                <ul class="list-group">
+                    {% for centre in arrondissement.centreDeSantes %}
+                        <li class="list-group-item">{{ centre.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-warning">No health center saved for this arrondissement</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">Pharmacy</h5>
+            {% if arrondissement.pharmacies is not empty %}
+                <ul class="list-group">
+                    {% for pharmacie in arrondissement.pharmacies %}
+                        <li class="list-group-item">{{ pharmacie.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-warning">No pharmacy saved for this arrondissement</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="card mb-2">
+        <div class="card-body">
+            <h5 class="card-title">Hospital</h5>
+            {% if arrondissement.hopitals is not empty %}
+                <ul class="list-group">
+                    {% for hopital in arrondissement.hopitals %}
+                        <li class="list-group-item">{{ hopital.name }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="alert alert-warning">No hospital saved for this arrondissement</div>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+{% endblock %}

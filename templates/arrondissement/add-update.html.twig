@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">{{ title }}</h1>
+
+    {% include 'Components/flashes.html.twig' %}
+
+    {{ form(form) }}
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">Arrondissements</h1>
+
+    {% include 'Components/flashes.html.twig' %}
+
+    <a href="{{ url('arrondissement_add') }}" type="button" class="btn btn-primary color-white mb-3">
+        Create an arrondissement
+    </a>
+
+    <table class="table table-hover table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col" class="table-dark">#</th>
+            <th scope="col" class="table-dark">Postal code</th>
+            <th scope="col" class="table-dark">Name</th>
+            <th scope="col" class="table-dark">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for arrondissement in arrondissements %}
+            <tr>
+                <th scope="row">{{ arrondissement.id}}</th>
+                <td>{{ arrondissement.postalCode }}</td>
+                <td>{{ arrondissement.name }}</td>
+                <td>
+                    <a href="{{ url('arrondissement_see', {id: arrondissement.id}) }}" type="button" class="btn btn-primary color-white">
+                        See
+                    </a>
+                    <a href="{{ url('arrondissement_update', {id: arrondissement.id}) }}" type="button" class="btn btn-primary color-white">
+                        Update
+                    </a>
+                    <a href="{{ url('arrondissement_delete', {id: arrondissement.id}) }}" type="button" class="btn btn-danger color-white">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
