@@ -20,7 +20,7 @@ class SecurityController extends AbstractController
 
 
     /**
-     * @Route("/login", name="login", methods={"POST"})
+     * @Route("/api/login", name="login", methods={"POST"})
      */
     public function login(Request $request)
     {
