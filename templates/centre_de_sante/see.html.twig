@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">Health center</h1>
+
+    {% include 'Components/flashes.html.twig' %}
+
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Informations</h5>
+
+            <p>Identifiant : {{ health_center.id }}</p>
+            <p>Name : {{ health_center.name }}</p>
+            <p>Adress : {{ health_center.address }}</p>
+            <p>phone number : {{ health_center.telephone }}</p>
+            <p>Website : {{ health_center.website }}</p>
+            <p>Longitude : {{ health_center.longitude }}</p>
+            <p>Latitude : {{ health_center.latitude }}</p>
+            <p>Time start : {{ health_center.timeStart|date('H:i') }}</p>
+            <p>Time end : {{ health_center.timeEnd|date('H:i') }}</p>
+            <p>Speciality list</p>
+            <ul>
+                {% for speciality in health_center.specialites %}
+                    <li>{{ speciality.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+
+
+{% endblock %}

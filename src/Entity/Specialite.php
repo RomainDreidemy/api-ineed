@@ -100,4 +100,11 @@ class Specialite
 
         return $this;
     }
+
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->name;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
 }

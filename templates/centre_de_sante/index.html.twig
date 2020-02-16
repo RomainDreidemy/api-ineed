@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">Health center</h1>
+
+    {% include 'Components/flashes.html.twig' %}
+
+    <a href="{{ url('health_center_add') }}" type="button" class="btn btn-primary color-white mb-3">
+        Create a health center
+    </a>
+
+    <table class="table table-hover table-bordered table-striped">
+        <thead>
+        <tr>
+            <th scope="col" class="table-dark">#</th>
+            <th scope="col" class="table-dark">Name</th>
+            <th scope="col" class="table-dark">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for health_center in health_centers %}
+            <tr>
+                <th scope="row">{{ health_center.id}}</th>
+                <td>{{ health_center.name }}</td>
+                <td>
+                    <a href="{{ url('health_center_see', {id: health_center.id}) }}" type="button" class="btn btn-primary color-white">
+                        See
+                    </a>
+                    <a href="{{ url('health_center_update', {id: health_center.id}) }}" type="button" class="btn btn-primary color-white">
+                        Update
+                    </a>
+                    <a href="{{ url('health_center_remove', {id: health_center.id}) }}" type="button" class="btn btn-danger color-white">
+                        Remove
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
