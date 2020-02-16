@@ -17,7 +17,7 @@ security:
         main:
             anonymous: ~
             json_login:
-                check_path: /login
+                check_path: /api/login
             guard:
                 authenticators:
                     - App\Security\BackofficeAuthenticator
