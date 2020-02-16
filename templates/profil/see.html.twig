@@ -19,10 +19,16 @@
             <p>Birth date : {{ profil.birthDate|date('Y-m-d') }}</p>
             <p>Blood type : {{ profil.bloodType }}</p>
             <p>Information : {{ profil.information }}</p>
-            <p>Maladie chronique : </p>
+            <p>Chronic disease list : </p>
             <ul>
                 {% for maladie in profil.maladieChroniques %}
                     <li>{{ maladie.name }}</li>
+                {% endfor %}
+            </ul>
+            <p>Meds list</p>
+            <ul>
+                {% for med in profil.medicaments %}
+                    <li>{{ med.name }}</li>
                 {% endfor %}
             </ul>
 
