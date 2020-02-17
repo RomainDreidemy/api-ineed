@@ -68,11 +68,6 @@ class Profil
     private $User;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Medicament", mappedBy="Profil")
-     */
-    private $medicaments;
-
-    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Pharmacie", mappedBy="Profil")
      */
     private $pharmacies;
@@ -91,6 +86,16 @@ class Profil
      * @ORM\ManyToMany(targetEntity="App\Entity\Hopital", mappedBy="Profil")
      */
     private $hopitals;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Medicament", inversedBy="profils")
+     */
+    private $Medicament;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Medicament", mappedBy="Profil", orphanRemoval=true)
+     */
+    private $medicaments;
 
     public function __construct()
     {
@@ -198,37 +203,6 @@ class Profil
     public function setUser(?User $User): self
     {
         $this->User = $User;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Medicament[]
-     */
-    public function getMedicaments(): Collection
-    {
-        return $this->medicaments;
-    }
-
-    public function addMedicament(Medicament $medicament): self
-    {
-        if (!$this->medicaments->contains($medicament)) {
-            $this->medicaments[] = $medicament;
-            $medicament->setProfil($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMedicament(Medicament $medicament): self
-    {
-        if ($this->medicaments->contains($medicament)) {
-            $this->medicaments->removeElement($medicament);
-            // set the owning side to null (unless already changed)
-            if ($medicament->getProfil() === $this) {
-                $medicament->setProfil(null);
-            }
-        }
 
         return $this;
     }
@@ -350,5 +324,36 @@ class Profil
         return $this->name . ' ' . $this->surname;
         // to show the id of the Category in the select
         // return $this->id;
+    }
+
+    /**
+     * @return Collection|Medicament[]
+     */
+    public function getMedicaments(): Collection
+    {
+        return $this->medicaments;
+    }
+
+    public function addMedicament(Medicament $medicament): self
+    {
+        if (!$this->medicaments->contains($medicament)) {
+            $this->medicaments[] = $medicament;
+            $medicament->setProfil($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedicament(Medicament $medicament): self
+    {
+        if ($this->medicaments->contains($medicament)) {
+            $this->medicaments->removeElement($medicament);
+            // set the owning side to null (unless already changed)
+            if ($medicament->getProfil() === $this) {
+                $medicament->setProfil(null);
+            }
+        }
+
+        return $this;
     }
 }

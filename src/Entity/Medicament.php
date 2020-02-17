@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,9 +30,20 @@ class Medicament
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Profil", mappedBy="Medicament")
+     */
+    private $profils;
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Profil", inversedBy="medicaments")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $Profil;
+
+    public function __construct()
+    {
+        $this->profils = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
