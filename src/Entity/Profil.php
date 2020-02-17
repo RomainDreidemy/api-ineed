@@ -88,22 +88,17 @@ class Profil
     private $hopitals;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Medicament", inversedBy="profils")
-     */
-    private $Medicament;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Medicament", mappedBy="Profil", orphanRemoval=true)
      */
     private $medicaments;
 
     public function __construct()
     {
-        $this->medicaments = new ArrayCollection();
         $this->pharmacies = new ArrayCollection();
         $this->centreDeSantes = new ArrayCollection();
         $this->maladieChroniques = new ArrayCollection();
         $this->hopitals = new ArrayCollection();
+        $this->medicaments = new ArrayCollection();
     }
 
     public function getId(): ?string

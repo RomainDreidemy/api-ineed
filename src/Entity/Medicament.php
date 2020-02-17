@@ -30,11 +30,6 @@ class Medicament
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Profil", mappedBy="Medicament")
-     */
-    private $profils;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Profil", inversedBy="medicaments")
      * @ORM\JoinColumn(nullable=false)
      */
