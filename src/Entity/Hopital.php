@@ -15,7 +15,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
  *     itemOperations={"get"},
  *     collectionOperations={"get"}
  * )
- * @ApiFilter(SearchFilter::class, properties={"Arrondissement": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={"Arrondissement": "exact", "Profil": "exact"})
 
  */
 class Hopital
