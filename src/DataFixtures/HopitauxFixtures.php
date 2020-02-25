@@ -33,6 +33,8 @@ class HopitauxFixtures extends Fixture implements DependentFixtureInterface
                         ]
                     )
                 )
+                ->setLatitude($h[4])
+                ->setLongitude($h[5])
             ;
              $manager->persist($hopital);
         }
@@ -42,7 +44,6 @@ class HopitauxFixtures extends Fixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        // TODO: Implement getDependencies() method.
         return [
             ArrondissementsFixtures::class
         ];
