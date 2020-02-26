@@ -87,9 +87,9 @@ class Pharmacie
     private $place_id;
 
     /**
-     * @ORM\Column(type="json_array")
+     * @ORM\OneToMany(targetEntity="App\Entity\PharmacieHorraire", mappedBy="Pharmacie")
      */
-    private $horraires = [];
+    private $pharmacieHorraires;
 
     public function __construct()
     {
@@ -260,14 +260,33 @@ class Pharmacie
         return $this;
     }
 
-    public function getHorraires(): ?array
+    /**
+     * @return Collection|PharmacieHorraire[]
+     */
+    public function getPharmacieHorraires(): Collection
     {
-        return $this->horraires;
+        return $this->pharmacieHorraires;
     }
 
-    public function setHorraires(array $horraires): self
+    public function addPharmacieHorraire(PharmacieHorraire $pharmacieHorraire): self
     {
-        $this->horraires = $horraires;
+        if (!$this->pharmacieHorraires->contains($pharmacieHorraire)) {
+            $this->pharmacieHorraires[] = $pharmacieHorraire;
+            $pharmacieHorraire->setPharmacie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePharmacieHorraire(PharmacieHorraire $pharmacieHorraire): self
+    {
+        if ($this->pharmacieHorraires->contains($pharmacieHorraire)) {
+            $this->pharmacieHorraires->removeElement($pharmacieHorraire);
+            // set the owning side to null (unless already changed)
+            if ($pharmacieHorraire->getPharmacie() === $this) {
+                $pharmacieHorraire->setPharmacie(null);
+            }
+        }
 
         return $this;
     }

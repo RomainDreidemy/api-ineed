@@ -39,8 +39,6 @@ class PharmaciesFixtures extends Fixture implements DependentFixtureInterface
                 ->setPlaceId($p->place_id ?? '')
             ;
 
-            $pharmacie->setHorraires($p->weekday_text);
-
             $manager->persist($pharmacie);
         }
 
