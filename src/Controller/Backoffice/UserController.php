@@ -24,6 +24,8 @@ class UserController extends AbstractController
 
     /**
      * @Route("/administration/users", name="users_list")
+     * @param EntityManagerInterface $entityManager
+     * @return Response
      */
     public function index(EntityManagerInterface $entityManager)
     {
@@ -36,6 +38,9 @@ class UserController extends AbstractController
 
     /**
      * @Route("/administration/users/see/{id}", name="users_see")
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @return Response
      */
     public function seeUser(User $user,EntityManagerInterface $entityManager)
     {
@@ -124,6 +129,9 @@ class UserController extends AbstractController
 
     /**
      * @Route("/administration/users/delete/{id}", name="users_delete")
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteUser(User $user, EntityManagerInterface $entityManager)
     {

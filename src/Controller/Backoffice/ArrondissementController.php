@@ -3,7 +3,6 @@
 namespace App\Controller\Backoffice;
 
 use App\Entity\Arrondissement;
-use App\Entity\User;
 use App\Form\ArrondissementType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +13,8 @@ class ArrondissementController extends AbstractController
 {
     /**
      * @Route("/administration/arrondissements", name="arrondissement_list")
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(EntityManagerInterface $entityManager)
     {
@@ -27,6 +28,8 @@ class ArrondissementController extends AbstractController
 
     /**
      * @Route("/administration/arrondissements/see/{id}", name="arrondissement_see")
+     * @param Arrondissement $arrondissement
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function seeArrondissement(Arrondissement $arrondissement)
     {
@@ -38,6 +41,9 @@ class ArrondissementController extends AbstractController
 
     /**
      * @Route("/administration/arrondissements/add", name="arrondissement_add")
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addArrondissement(EntityManagerInterface $entityManager, Request $request)
     {
@@ -61,8 +67,12 @@ class ArrondissementController extends AbstractController
 
 
     /**
-    * @Route("/administration/arrondissements/update/{id}", name="arrondissement_update")
-    */
+     * @Route("/administration/arrondissements/update/{id}", name="arrondissement_update")
+     * @param Arrondissement $arrondissement
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function updateArrondissement(Arrondissement $arrondissement,EntityManagerInterface $entityManager, Request $request)
     {
         $form = $this->createForm(ArrondissementType::class, $arrondissement);
@@ -85,6 +95,9 @@ class ArrondissementController extends AbstractController
 
     /**
      * @Route("/administration/arrondissements/delete/{id}", name="arrondissement_delete")
+     * @param Arrondissement $arrondissement
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteArrondissement(Arrondissement $arrondissement,EntityManagerInterface $entityManager)
     {

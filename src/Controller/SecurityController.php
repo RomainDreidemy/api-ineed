@@ -13,6 +13,11 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class SecurityController extends AbstractController
 {
     private $encoder;
+
+    /**
+     * SecurityController constructor.
+     * @param UserPasswordEncoderInterface $encoder
+     */
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
@@ -21,6 +26,8 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/api/login", name="login", methods={"POST"})
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function login(Request $request)
     {
@@ -35,6 +42,9 @@ class SecurityController extends AbstractController
 
     /**
      * @Route("/users/add", name="addUser", methods={"POST"})
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
     public function userAdd(Request $request, EntityManagerInterface $entityManager)
     {

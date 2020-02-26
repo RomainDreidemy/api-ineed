@@ -94,6 +94,9 @@ class CentreDeSanteController extends AbstractController
 
     /**
      * @Route("administration/health-center/see/{id}", name="health_center_see")
+     * @param CentreDeSante $centreDeSante
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function seeHealthCenter(CentreDeSante $centreDeSante,EntityManagerInterface $entityManager)
     {

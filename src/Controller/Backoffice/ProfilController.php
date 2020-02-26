@@ -14,6 +14,8 @@ class ProfilController extends AbstractController
 {
     /**
      * @Route("/administration/profils", name="profils_list")
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(EntityManagerInterface $entityManager)
     {
@@ -26,6 +28,10 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/administration/user/{id}/profils/add", name="profils_add")
+     * @param User $user
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addProfil(User $user,EntityManagerInterface $entityManager, Request $request)
     {
@@ -54,6 +60,10 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/administration/update/{id}", name="profils_update")
+     * @param Profil $profil
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function updateProfil(Profil $profil,EntityManagerInterface $entityManager, Request $request)
     {
@@ -80,6 +90,9 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/administration/profils/delete/{id}", name="profils_delete")
+     * @param Profil $profil
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteProfil(Profil $profil, EntityManagerInterface $entityManager)
     {
@@ -91,6 +104,9 @@ class ProfilController extends AbstractController
 
     /**
      * @Route("/administration/profils/see/{id}", name="profils_see")
+     * @param Profil $profil
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function seeProfil(Profil $profil, EntityManagerInterface $entityManager)
     {

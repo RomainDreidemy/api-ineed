@@ -13,6 +13,8 @@ class HopitalController extends AbstractController
 {
     /**
      * @Route("/administration/hopital", name="hopital")
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(EntityManagerInterface $entityManager)
     {
@@ -23,6 +25,9 @@ class HopitalController extends AbstractController
 
     /**
      * @Route("/administration/hopital/add", name="hopital_add")
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addHopital(EntityManagerInterface $entityManager, Request $request)
     {
@@ -45,6 +50,10 @@ class HopitalController extends AbstractController
 
     /**
      * @Route("/administration/hopital/update/{id}", name="hopital_update")
+     * @param Hopital $hopital
+     * @param EntityManagerInterface $entityManager
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function updateHopital(Hopital $hopital,EntityManagerInterface $entityManager, Request $request)
     {
@@ -67,6 +76,9 @@ class HopitalController extends AbstractController
 
     /**
      * @Route("/administration/hopital/remove/{id}", name="hopital_remove")
+     * @param Hopital $hopital
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function removeHopital(Hopital $hopital,EntityManagerInterface $entityManager)
     {
@@ -75,8 +87,12 @@ class HopitalController extends AbstractController
         $this->addFlash('success', 'The Hospital have been removed');
         return $this->redirectToRoute('hopital');
     }
+
     /**
      * @Route("/administration/hopital/see/{id}", name="hopital_see")
+     * @param Hopital $hopital
+     * @param EntityManagerInterface $entityManager
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function seeHopital(Hopital $hopital,EntityManagerInterface $entityManager)
     {
