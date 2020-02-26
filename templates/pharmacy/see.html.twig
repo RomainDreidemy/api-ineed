@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <h1 class="h1">Health center</h1>
+    <h1 class="h1">Pharmacy</h1>
 
     {% include 'Components/flashes.html.twig' %}
 
@@ -22,8 +22,8 @@
             <p>Latitude : {{ pharmacy.latitude }}</p>
             <p>Horraires : </p>
             <ul>
-                {% for horraire in pharmacy.horraires %}
-                    <li>{{ horraire }}</li>
+                {% for horraire in pharmacy.pharmacieHorraires %}
+                    <li>{{ horraire.day }} : {{ horraire.timeStart|date('H:i') }} - {{ horraire.timeEnd|date('H:i') }}</li>
                 {% endfor %}
             </ul>
         </div>
