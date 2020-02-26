@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">Health center</h1>
+
+    {% include 'Components/flashes.html.twig' %}
+
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Informations</h5>
+
+            <p>Identifiant : {{ hopital.id }}</p>
+            <p>Name : {{ hopital.name }}</p>
+            <p>Adress : {{ hopital.address }}</p>
+            <p>Longitude : {{ hopital.longitude }}</p>
+            <p>Latitude : {{ hopital.latitude }}</p>
+        </div>
+    </div>
+
+{% endblock %}

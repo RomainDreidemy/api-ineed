@@ -6,7 +6,7 @@
 
     <h1 class="h1">Pharmacy list</h1>
 
-    <a href="{{ url('pharmacy_add') }}" type="button" class="btn btn-primary color-white mb-3">
+    <a href="{{ url('hopital_add') }}" type="button" class="btn btn-primary color-white mb-3">
         Create a pharmacy
     </a>
 
@@ -26,13 +26,13 @@
                 <th scope="row">{{ hopital.id }}</th>
                 <td>{{ hopital.name }}</td>
                 <td>
-                    <a href="" type="button" class="btn btn-primary color-white">
+                    <a href="{{ url('hopital_see', {id: hopital.id}) }}" type="button" class="btn btn-primary color-white">
                         See
                     </a>
-                    <a href="" type="button" class="btn btn-primary color-white">
+                    <a href="{{ url('hopital_update', {id: hopital.id}) }}" type="button" class="btn btn-primary color-white">
                         Update
                     </a>
-                    <a href="" type="button" class="btn btn-danger color-white">
+                    <a href="{{ url('hopital_remove', {id: hopital.id}) }}" type="button" class="btn btn-danger color-white">
                         Remove
                     </a>
                 </td>
