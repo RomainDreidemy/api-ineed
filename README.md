@@ -1,8 +1,10 @@
 # Information pour le rendu
 
-## Personnes du groupes concernées par l'expertise (Back)
+## Personnes du groupe concernées par l'expertise (Back)
 Romain Dreidemy
 
+## Dossier d'argumentation
+Lien d'argumentation
 
-# Front : 
+## Front :
 https://github.com/BalducciVictor/front-ineed.git
