@@ -14,7 +14,13 @@ use Doctrine\ORM\Mapping as ORM;
  *     itemOperations={"get"},
  *     collectionOperations={"get"}
  * )
- * @ApiFilter(SearchFilter::class, properties={"Profil": "exact", "Arrondissement": "exact"})
+ * @ApiFilter(SearchFilter::class, properties={
+ *     "Profil": "exact",
+ *     "Arrondissement": "exact",
+ *     "open_night": "exact",
+ *     "open_sunday": "exact",
+ *     "open_all": "exact"
+ * })
  * @ORM\Entity(repositoryClass="App\Repository\PharmacieRepository")
  */
 class Pharmacie
