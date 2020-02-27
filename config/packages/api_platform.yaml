@@ -10,10 +10,11 @@ api_platform:
             enabled: false
 
     # The title of the API.
-    title: 'I need'
+    title: 'API - I need'
 
     # The description of the API.
-    description: 'API description'
+    description: 'Bienvenue sur la documentation. Ici ce trouve tous les points d entrés à l API.<br>
+    Pour accéder au back-office "/login"'
 
     # The version of the API.
     version: '1.1.0'
