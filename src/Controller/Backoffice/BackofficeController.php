@@ -35,4 +35,12 @@ class BackofficeController extends AbstractController
     {
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
     }
+
+    /**
+     * @Route("/administration", name="administration")
+     */
+    public function administration()
+    {
+        return $this->redirectToRoute('users_list');
+    }
 }

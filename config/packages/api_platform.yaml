@@ -14,7 +14,7 @@ api_platform:
 
     # The description of the API.
     description: 'Bienvenue sur la documentation. Ici ce trouve tous les points d entrés à l API.<br>
-    Pour accéder au back-office "/login"'
+    Pour accéder au back-office "/administration"'
 
     # The version of the API.
     version: '1.1.0'
